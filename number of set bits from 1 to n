@@ -1,0 +1,14 @@
+long long countTotalSetBits(long long n) {
+    long long count = 0;
+
+    for (long long i = 1; i <= n; i <<= 1) {
+       
+        long long completePairs = (n + 1) / (i * 2);
+        long long remainder = (n + 1) % (i * 2);
+        count += completePairs * i;
+        if (remainder > i) {
+            count += remainder - i;
+        }
+    }
+    return count;
+}
