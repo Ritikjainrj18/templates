@@ -11,7 +11,7 @@ class DSU{
     }
     int getPar(int x){
         if(par[x]==x) return x;
-        return par[x]=getPar(x);
+        return par[x]=getPar(par[x]);
     }
     void merge(int a,int b){
         a=getPar(a);
