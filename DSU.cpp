@@ -11,7 +11,7 @@ class DSU{
     }
     int getPar(int x){
         if(par[x]==x) return x;
-        return par[x]=getPar(x);
+        return par[x]=getPar(par[x]);
     }
     void merge(int a,int b){
         a=getPar(a);
@@ -20,7 +20,10 @@ class DSU{
         if(siz[a]<siz[b]){
             swap(a,b);
         }
-        par[b]=a;
-        siz[a]+=siz[b];
+
+        // a pe already path compression ho rakha hai, as size more so more of the elements have already been made parent of a 
+        // so if b's parent is a need to do less path compression 
+        par[b]=a;                  // make a as parent 
+        siz[a]+=siz[b];            // add elements to a 
     }
 };
